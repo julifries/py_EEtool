@@ -1,0 +1,17 @@
+PURPOSE:
+- Input 4band resistor code -> gives you the value
+- Give a value in ohm -> get the 4band combination
+- DECODE: 
+- ENCODE: 
+=================================================================================================
+INTERFACE:
+- terminal based
+- user inputs decode + combo -> gives value
+- user inputs encode + value -> gives combo
+- a start menu perhaps?
+==================================================================================================
+
+LATER:
+- ohms law stuff
+- series parallell circuits something something :3
+- idk
