@@ -8,11 +8,22 @@ yellowColor = resistorColor("yellow", 4, 4, 10**4, 0.04)
 greenColor = resistorColor("green", 5, 5, 10**5, 0.005)
 blueColor = resistorColor("blue", 6, 6, 10**6, 0.0025)
 violetColor = resistorColor("violet", 7, 7, 10**7, 0.0001)
-
 greyColor = resistorColor("grey", 8, 8, 10**8, 0.000005)
-
 whiteColor = resistorColor("white", 9, 9, 10**9, None)
+goldColor = resistorColor("gold", None, None, 10 ** (-1), 0.05)
+silverColor = resistorColor("silver", None, None, 10 ** (-2), 0.1)
 
-goldColor = resistorColor("gold", None, None, 10**(-1), 0.05)
-
-silverColor = resistorColor("silver", None, None, 10**(-2), 0.1)
+colors = [
+    blackColor,
+    brownColor,
+    redColor,
+    orangeColor,
+    yellowColor,
+    greenColor,
+    blueColor,
+    violetColor,
+    greyColor,
+    whiteColor,
+    goldColor,
+    silverColor,
+]
