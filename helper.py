@@ -1,4 +1,5 @@
-from collections import Counter
+from typing import Union, List
+
 
 class resistorColor4BAND:
     def __init__(self, colorName, firstDigit, secondDigit, multiplier, tolerance):
@@ -11,17 +12,17 @@ class resistorColor4BAND:
 
 #color objects
 blackColor = resistorColor4BAND("black", 0, 0, 1, None)
-brownColor = resistorColor4BAND("brown", 1, 1, 10, 0.01)
-redColor = resistorColor4BAND("red", 2, 2, 10**2, 0.02)
-orangeColor = resistorColor4BAND("orange", 3, 3, 10**3, 0.03)
-yellowColor = resistorColor4BAND("yellow", 4, 4, 10**4, 0.04)
-greenColor = resistorColor4BAND("green", 5, 5, 10**5, 0.005)
-blueColor = resistorColor4BAND("blue", 6, 6, 10**6, 0.0025)
-violetColor = resistorColor4BAND("violet", 7, 7, 10**7, 0.0001)
-greyColor = resistorColor4BAND("grey", 8, 8, 10**8, 0.000005)
+brownColor = resistorColor4BAND("brown", 1, 1, 10, "+-1%")
+redColor = resistorColor4BAND("red", 2, 2, 10**2, "+-2%")
+orangeColor = resistorColor4BAND("orange", 3, 3, 10**3, None)
+yellowColor = resistorColor4BAND("yellow", 4, 4, 10**4, None)
+greenColor = resistorColor4BAND("green", 5, 5, 10**5, "+-0.5%")
+blueColor = resistorColor4BAND("blue", 6, 6, 10**6, "+-0.25%")
+violetColor = resistorColor4BAND("violet", 7, 7, 10**7, "+-0.1%")
+greyColor = resistorColor4BAND("grey", 8, 8, 10**8, "+-0.05")
 whiteColor = resistorColor4BAND("white", 9, 9, 10**9, None)
-goldColor = resistorColor4BAND("gold", None, None, 10 ** (-1), 0.05)
-silverColor = resistorColor4BAND("silver", None, None, 10 ** (-2), 0.1)
+goldColor = resistorColor4BAND("gold", None, None, 10 ** (-1), "+-5%")
+silverColor = resistorColor4BAND("silver", None, None, 10 ** (-2), "+-10%")
 
 #dictionary for the accurate colors
 COLORS_4BAND = {
@@ -63,3 +64,12 @@ def check_colorFormat(processedData):
 
 def check_inputValid(processedData):
     return (len(processedData)==4 and check_colorValues(processedData) and check_colorFormat(processedData))
+
+def create_colorObjects(processedData):
+    colorsList = [COLORS_4BAND[color] for color in processedData]
+    return colorsList
+
+def calculateValue(colorsList: List[resistorColor4BAND])->str:
+    actualValue=(int)((colorsList[0].firstDigit*10+colorsList[1].secondDigit)*colorsList[2].multiplier)
+    withtolerance=str(actualValue)+str(colorsList[3].tolerance)
+
