@@ -1,4 +1,4 @@
-from typing import Union, List
+from typing import List
 
 
 class resistorColor4BAND:
@@ -10,7 +10,7 @@ class resistorColor4BAND:
         self.tolerance = tolerance
 
 
-#color objects
+# color objects
 blackColor = resistorColor4BAND("black", 0, 0, 1, None)
 brownColor = resistorColor4BAND("brown", 1, 1, 10, "+-1%")
 redColor = resistorColor4BAND("red", 2, 2, 10**2, "+-2%")
@@ -24,7 +24,7 @@ whiteColor = resistorColor4BAND("white", 9, 9, 10**9, None)
 goldColor = resistorColor4BAND("gold", None, None, 10 ** (-1), "+-5%")
 silverColor = resistorColor4BAND("silver", None, None, 10 ** (-2), "+-10%")
 
-#dictionary for the accurate colors
+# dictionary for the accurate colors
 COLORS_4BAND = {
     blackColor.colorName: blackColor,
     brownColor.colorName: brownColor,
@@ -40,20 +40,28 @@ COLORS_4BAND = {
     silverColor.colorName: silverColor,
 }
 
-#a list comprehension thingy, makes every element to lower in the splitted Userinput list
-def format_rawData(userInput):
-     return [c.lower() for c in userInput.split()]
 
-#checks if an invalid color is encountered
+# a list comprehension thingy, makes every element to lower in the splitted Userinput list
+def format_rawData(userInput):
+    return [c.lower() for c in userInput.split()]
+
+
+# checks if an invalid color is encountered
 def check_colorValues(processedData):
-    #all will only return true if all colors exist in COLORS_4BAND
-    #basically, if every color in processedData is a valid dictionary key, will return True
+    # all will only return true if all colors exist in COLORS_4BAND
+    # basically, if every color in processedData is a valid dictionary key, will return True
     return all(color in COLORS_4BAND for color in processedData)
-  
+
+
 def check_colorFormat(processedData):
-    not_allowed_1and2band=[goldColor.colorName,silverColor.colorName]
-    not_allowed_4band=[blackColor.colorName,orangeColor.colorName,yellowColor.colorName,whiteColor.colorName]
-    
+    not_allowed_1and2band = [goldColor.colorName, silverColor.colorName]
+    not_allowed_4band = [
+        blackColor.colorName,
+        orangeColor.colorName,
+        yellowColor.colorName,
+        whiteColor.colorName,
+    ]
+
     if processedData[0] in not_allowed_1and2band:
         return False
     if processedData[1] in not_allowed_1and2band:
@@ -62,18 +70,25 @@ def check_colorFormat(processedData):
         return False
     return True
 
-#checks all demands for valid input
-def check_inputValid(processedData):
-    return (len(processedData)==4 and check_colorValues(processedData) and check_colorFormat(processedData))
 
-#creates actual color objects from the keys
+# checks all demands for valid input
+def check_inputValid(processedData):
+    return (
+        len(processedData) == 4
+        and check_colorValues(processedData)
+        and check_colorFormat(processedData)
+    )
+
+
+# creates actual color objects from the keys
 def create_colorObjects(processedData):
     colorsList = [COLORS_4BAND[color] for color in processedData]
     return colorsList
 
-#calculates the integer value and adds the tolerance
-def calculateValue(colorsList: List[resistorColor4BAND])->str:
-    actualValue=((colorsList[0].firstDigit*10+colorsList[1].secondDigit)*colorsList[2].multiplier)
-    return str(actualValue)+"Ω, tolerance "+str(colorsList[3].tolerance)
 
-
+# calculates the integer value and adds the tolerance
+def calculateValue(colorsList: List[resistorColor4BAND]) -> str:
+    actualValue = (
+        colorsList[0].firstDigit * 10 + colorsList[1].secondDigit
+    ) * colorsList[2].multiplier
+    return str(actualValue) + "Ω, tolerance " + str(colorsList[3].tolerance)
