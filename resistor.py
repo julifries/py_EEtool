@@ -62,14 +62,18 @@ def check_colorFormat(processedData):
         return False
     return True
 
+#checks all demands for valid input
 def check_inputValid(processedData):
     return (len(processedData)==4 and check_colorValues(processedData) and check_colorFormat(processedData))
 
+#creates actual color objects from the keys
 def create_colorObjects(processedData):
     colorsList = [COLORS_4BAND[color] for color in processedData]
     return colorsList
 
+#calculates the integer value and adds the tolerance
 def calculateValue(colorsList: List[resistorColor4BAND])->str:
-    actualValue=(int)((colorsList[0].firstDigit*10+colorsList[1].secondDigit)*colorsList[2].multiplier)
-    withtolerance=str(actualValue)+str(colorsList[3].tolerance)
+    actualValue=((colorsList[0].firstDigit*10+colorsList[1].secondDigit)*colorsList[2].multiplier)
+    return str(actualValue)+str(colorsList[3].tolerance)
+
 
