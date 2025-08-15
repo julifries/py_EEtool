@@ -1,0 +1,6 @@
+def check_colorValues(processedData):
+    color in COLORS_4BAND for color in processedData is a generator expression
+    that loops over each color in processedData and yields True or False depending on whether
+    that color exists as a key in COLORS_4BAND.
+    “Take each color from the user’s list and see if it’s one
+    of the known resistor colors in my dictionary.”
