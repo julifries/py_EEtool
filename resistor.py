@@ -74,6 +74,6 @@ def create_colorObjects(processedData):
 #calculates the integer value and adds the tolerance
 def calculateValue(colorsList: List[resistorColor4BAND])->str:
     actualValue=((colorsList[0].firstDigit*10+colorsList[1].secondDigit)*colorsList[2].multiplier)
-    return str(actualValue)+str(colorsList[3].tolerance)
+    return str(actualValue)+"Ω, tolerance "+str(colorsList[3].tolerance)
 
 
