@@ -1,4 +1,5 @@
 from resistor4band import *
+from helper import *
 
 
 

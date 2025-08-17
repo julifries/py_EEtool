@@ -11,40 +11,37 @@ class resistorColor4BAND:
 
 
 # color objects
-blackColor = resistorColor4BAND("black", 0, 0, 1, None)
-brownColor = resistorColor4BAND("brown", 1, 1, 10, "+-1%")
-redColor = resistorColor4BAND("red", 2, 2, 10**2, "+-2%")
-orangeColor = resistorColor4BAND("orange", 3, 3, 10**3, None)
-yellowColor = resistorColor4BAND("yellow", 4, 4, 10**4, None)
-greenColor = resistorColor4BAND("green", 5, 5, 10**5, "+-0.5%")
-blueColor = resistorColor4BAND("blue", 6, 6, 10**6, "+-0.25%")
-violetColor = resistorColor4BAND("violet", 7, 7, 10**7, "+-0.1%")
-greyColor = resistorColor4BAND("grey", 8, 8, 10**8, "+-0.05")
-whiteColor = resistorColor4BAND("white", 9, 9, 10**9, None)
-goldColor = resistorColor4BAND("gold", None, None, 10 ** (-1), "+-5%")
-silverColor = resistorColor4BAND("silver", None, None, 10 ** (-2), "+-10%")
+blackColor4band = resistorColor4BAND("black", 0, 0, 1, None)
+brownColor4band = resistorColor4BAND("brown", 1, 1, 10, "+-1%")
+redColor4band = resistorColor4BAND("red", 2, 2, 10**2, "+-2%")
+orangeColor4band = resistorColor4BAND("orange", 3, 3, 10**3, None)
+yellowColor4band = resistorColor4BAND("yellow", 4, 4, 10**4, None)
+greenColor4band = resistorColor4BAND("green", 5, 5, 10**5, "+-0.5%")
+blueColor4band = resistorColor4BAND("blue", 6, 6, 10**6, "+-0.25%")
+violetColor4band = resistorColor4BAND("violet", 7, 7, 10**7, "+-0.1%")
+greyColor4band = resistorColor4BAND("grey", 8, 8, 10**8, "+-0.05")
+whiteColor4band = resistorColor4BAND("white", 9, 9, 10**9, None)
+goldColor4band = resistorColor4BAND("gold", None, None, 10 ** (-1), "+-5%")
+silverColor4band = resistorColor4BAND("silver", None, None, 10 ** (-2), "+-10%")
 
 # dictionary for the accurate colors
 COLORS_4BAND = {
-    blackColor.colorName: blackColor,
-    brownColor.colorName: brownColor,
-    redColor.colorName: redColor,
-    orangeColor.colorName: orangeColor,
-    yellowColor.colorName: yellowColor,
-    greenColor.colorName: greenColor,
-    blueColor.colorName: blueColor,
-    violetColor.colorName: violetColor,
-    greyColor.colorName: greyColor,
-    whiteColor.colorName: whiteColor,
-    goldColor.colorName: goldColor,
-    silverColor.colorName: silverColor,
+    blackColor4band.colorName: blackColor4band,
+    brownColor4band.colorName: brownColor4band,
+    redColor4band.colorName: redColor4band,
+    orangeColor4band.colorName: orangeColor4band,
+    yellowColor4band.colorName: yellowColor4band,
+    greenColor4band.colorName: greenColor4band,
+    blueColor4band.colorName: blueColor4band,
+    violetColor4band.colorName: violetColor4band,
+    greyColor4band.colorName: greyColor4band,
+    whiteColor4band.colorName: whiteColor4band,
+    goldColor4band.colorName: goldColor4band,
+    silverColor4band.colorName: silverColor4band,
 }
 
 
 # a list comprehension thingy, makes every element to lower in the splitted Userinput list
-def format_rawData(userInput):
-    return [c.lower() for c in userInput.split()]
-
 
 # checks if an invalid color is encountered
 def check_colorValues(processedData):
@@ -54,12 +51,12 @@ def check_colorValues(processedData):
 
 
 def check_colorFormat(processedData):
-    not_allowed_1and2band = [goldColor.colorName, silverColor.colorName]
+    not_allowed_1and2band = [goldColor4band.colorName, silverColor4band.colorName]
     not_allowed_4band = [
-        blackColor.colorName,
-        orangeColor.colorName,
-        yellowColor.colorName,
-        whiteColor.colorName,
+        blackColor4band.colorName,
+        orangeColor4band.colorName,
+        yellowColor4band.colorName,
+        whiteColor4band.colorName,
     ]
 
     if processedData[0] in not_allowed_1and2band:
